@@ -8,7 +8,16 @@
 //   ]);
 // };
 import { Link } from "react-router-dom";
-const Pet = ({
+import { FunctionComponent } from "react";
+interface IProps {
+  name: string;
+  animal: string;
+  breed: string;
+  location: string;
+  id: number;
+  images: string [];
+}
+const Pet: FunctionComponent<IProps> = ({
   name, animal, breed, images, location, id
 }) => {
   let hero = 'https://pets-images.dev-apis.com/pets/none.jpg';
