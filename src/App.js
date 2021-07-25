@@ -1,23 +1,15 @@
-import React, { StrictMode, useState } from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from './store';
 // import Pet from "./Pet";
 import SearhParams from "./SearchParams";
 import Details from "./Details";
-import ThemeContext from "./ThemeContext";
-// const App = () => {
-//   return React.createElement("div", {}, [
-//   React.createElement("h1", {}, "Adopt Me!"),
-//   React.createElement(Pet),
-//   React.createElement(Pet),
-//   React.createElement(Pet),
-//   ]);
-// };
- 
+
 const App = () => {
-  const theme = useState("darkblue");
   return (
-    <ThemeContext.Provider value={theme}>
+    <Provider store={store}>
       <div>
         <Router>
           <header>
@@ -34,17 +26,13 @@ const App = () => {
             </Route>
           </Switch>
         </Router>
-        
-        {/* <Pet name="Luna" animal="dog" breed="Havanese" />
-        <Pet name="Pepper" animal="bird" breed="Cockatiel" />
-        <Pet name="Doink" animal="cat" breed="Mix" /> */}
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 }
 
 ReactDOM.render(
   <StrictMode>
     <App />
-  </StrictMode>, 
+  </StrictMode>,
   document.getElementById("root"));
